@@ -8,3 +8,43 @@
   </mat-menu>
 </mat-toolbar>
 
+
+<form class="example-form" [formGroup]="form">
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Nome completo</mat-label>
+    <input matInput type="text" class="form-control" formControlName="nome">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>CPF</mat-label>
+    <input matInput type="text" class="form-control" formControlName="cpf">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Data de nascimento</mat-label>
+    <input matInput placeholder="XX/XX/XXX" type="text" class="form-control" formControlName="dataNasc">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Sexo</mat-label>
+    <input matInput placeholder="Feminino, masculino ou outro"  type="text" class="form-control" formControlName="sexo">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Telefone</mat-label>
+    <input matInput placeholder="(00)90000-0000" type="text" class="form-control" formControlName="telefone">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Tipo sanguineo</mat-label>
+    <input matInput type="text" class="form-control" formControlName="tipoSangue">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Tem alergia a algum medicamento?</mat-label>
+    <textarea matInput></textarea>
+  </mat-form-field>
+
+  <button mat-stroked-button class="button" (click)="onSubmit()">Adicionar</button>
+</form>

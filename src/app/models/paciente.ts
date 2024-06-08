@@ -1,6 +1,6 @@
 export interface Paciente {
-  cpf: number;
   nome: string;
+  cpf: number;
   dataNasc: string;
   sexo: string;
   telefone: string;

@@ -40,7 +40,7 @@ export class PacienteService {
     return this.pacientesSubject.asObservable();
   }
 
-  public inserirContato(paciente: Paciente) {
+  public incluirPaciente(paciente: Paciente) {
     const currentPacientes = this.pacientesSubject.value;
     this.pacientesSubject.next([...currentPacientes, paciente]);
   }

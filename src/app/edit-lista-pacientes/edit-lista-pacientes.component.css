@@ -5,3 +5,27 @@
 .navbar{
   background: #004f4f;
 }
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  background-color: #004f4f;
+  margin: 25px;
+  align-content: baseline;
+  border-radius: 10px;
+}
+
+.example-full-width {
+  width: 96%;
+  margin: 10px;
+}
+
+.button{
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  margin-left: 180px;
+}
+
+

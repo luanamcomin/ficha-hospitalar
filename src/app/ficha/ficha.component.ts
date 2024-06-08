@@ -3,6 +3,7 @@ import { RouterLink } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { Paciente } from '../models/paciente';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-ficha',
@@ -11,6 +12,7 @@ import { Paciente } from '../models/paciente';
     RouterLink,
     MatCardModule,
     MatButtonModule,
+    MatIcon
   ],
   templateUrl: './ficha.component.html',
   styleUrls: ['./ficha.component.css']

@@ -8,3 +8,7 @@
   color: #004f4f;
   text-decoration:solid;
 }
+
+.buttons{
+  display: flex;
+}

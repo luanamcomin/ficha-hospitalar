@@ -5,6 +5,10 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import { FormGroup, FormsModule, FormControl, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { PacienteService } from '../services/paciente.service';
 
 @Component({
   selector: 'app-edit-lista-pacientes',
@@ -16,10 +20,42 @@ import { MatButtonModule } from '@angular/material/button';
     MatButtonModule,
     MatIconModule,
     RouterOutlet,
-    MatMenuModule],
+    MatMenuModule,
+    FormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    ReactiveFormsModule
+  ],
   templateUrl: './edit-lista-pacientes.component.html',
   styleUrl: './edit-lista-pacientes.component.css'
 })
 export class EditListaPacientesComponent {
+
+  constructor(
+    private pacienteService: PacienteService
+  ){ }
+
+  form = new FormGroup({
+    nome: new FormControl(),
+    cpf: new FormControl(),
+    dataNasc: new FormControl(),
+    sexo: new FormControl(),
+    telefone: new FormControl(),
+    email: new FormControl(),
+    tipoSangue: new FormControl(),
+
+  });
+
+  onSubmit(){
+    let paciente  = {nome:this.form.value.nome,
+                    cpf:this.form.value.cpf,
+                    dataNasc:this.form.value.dataNasc,
+                    sexo:this.form.value.sexo,
+                    telefone:this.form.value.telefone,
+                    tipoSangue:this.form.value.tipoSangue,
+    }
+    this.pacienteService.incluirPaciente(paciente);
+    this.form.reset();
+  }
 
 }
