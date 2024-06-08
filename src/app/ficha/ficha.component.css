@@ -1,0 +1,10 @@
+.ficha-paciente {
+  width: 400px;
+  height: auto;
+  justify-content: center;
+  margin: 25px;
+}
+.nome-paciente{
+  color: #004f4f;
+  text-decoration:solid;
+}

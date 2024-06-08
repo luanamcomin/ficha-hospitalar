@@ -1,4 +1,4 @@
-<mat-toolbar>
+<mat-toolbar class="navbar">
   <span>Cadastro de Pacientes</span>
   <span class="example-spacer"></span>
 
@@ -8,4 +8,9 @@
   </mat-menu>
 </mat-toolbar>
 
+<div class="ficha-container">
+  <div *ngFor="let paciente of pacientes">
+    <app-ficha [paciente]="paciente"></app-ficha>
+  </div>
+</div>
 
