@@ -1,0 +1,11 @@
+<mat-toolbar>
+  <span>Cadastro de Pacientes</span>
+  <span class="example-spacer"></span>
+
+  <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+  <mat-menu #menu="matMenu">
+    <button routerLink="/edit" mat-menu-item>Editar cadastro</button>
+  </mat-menu>
+</mat-toolbar>
+
+
