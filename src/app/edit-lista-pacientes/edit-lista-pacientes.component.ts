@@ -57,5 +57,5 @@ export class EditListaPacientesComponent {
     this.pacienteService.incluirPaciente(paciente);
     this.form.reset();
   }
-
 }
+

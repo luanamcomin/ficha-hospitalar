@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { Paciente } from '../models/paciente';
 import { MatIcon } from '@angular/material/icon';
+import { PacienteService } from '../services/paciente.service';
 
 @Component({
   selector: 'app-ficha',
@@ -23,4 +24,14 @@ export class FichaComponent {
   onClick() {
     alert('Ficha adicionada a fila');
   }
+
+  constructor(private pacienteService: PacienteService) { }
+
+  onDelete() {
+    if (this.paciente) {
+      this.pacienteService.deletarPaciente(this.paciente.cpf);
+    }
+  }
+
 }
+

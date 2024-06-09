@@ -9,7 +9,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class PacienteService {
   private pacientesSubject = new BehaviorSubject<Paciente[]>([
   {
-    cpf: 12345678900,
+    cpf: 12345678000,
     nome: "Luana Martins",
     dataNasc: "17/04/1996",
     sexo: "Feminino",
@@ -17,7 +17,7 @@ export class PacienteService {
     tipoSangue: "A",
   },
   {
-    cpf: 12345678900,
+    cpf: 12365678900,
     nome: "Priscila",
     dataNasc: "01/01/2000",
     sexo: "Feminino",
@@ -25,7 +25,7 @@ export class PacienteService {
     tipoSangue: "B",
   },
   {
-    cpf: 12345678900,
+    cpf: 12345608900,
     nome: "Amanda",
     dataNasc: "02/02/2000",
     sexo: "Feminino",
@@ -43,6 +43,20 @@ export class PacienteService {
   public incluirPaciente(paciente: Paciente) {
     const currentPacientes = this.pacientesSubject.value;
     this.pacientesSubject.next([...currentPacientes, paciente]);
+  }
+
+  public deletarPaciente(cpf: number) {
+    const currentPacientes = this.pacientesSubject.value;
+    const updatedPacientes = currentPacientes.filter(paciente => paciente.cpf !== cpf);
+    this.pacientesSubject.next(updatedPacientes);
+  }
+
+  public atualizarPaciente(updatedPaciente: Paciente) {
+    const currentPacientes = this.pacientesSubject.value;
+    const updatedPacientes = currentPacientes.map(paciente =>
+      paciente.cpf === updatedPaciente.cpf ? updatedPaciente : paciente
+    );
+    this.pacientesSubject.next(updatedPacientes);
   }
 }
 
