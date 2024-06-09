@@ -4,13 +4,14 @@
 
   <button mat-button [matMenuTriggerFor]="menu">Menu</button>
   <mat-menu #menu="matMenu">
-    <button routerLink="/edit" mat-menu-item>Editar cadastro</button>
+    <button routerLink="/edit" mat-menu-item>Incluir paciente</button>
   </mat-menu>
 </mat-toolbar>
 
-<div class="ficha-container">
-  <div *ngFor="let paciente of pacientes">
-    <app-ficha [paciente]="paciente"></app-ficha>
+<div class="center-container">
+  <div class="ficha-container">
+    <div *ngFor="let paciente of pacientes">
+      <app-ficha [paciente]="paciente"></app-ficha>
+    </div>
   </div>
 </div>
-

@@ -19,6 +19,7 @@
 .example-full-width {
   width: 96%;
   margin: 10px;
+  align-content: center;
 }
 
 .button{
@@ -28,4 +29,9 @@
   margin-left: 180px;
 }
 
-
+form {
+  display: flexbox !important;
+  margin-top: 0em;
+  unicode-bidi: isolate;
+  align-content: center;
+}
