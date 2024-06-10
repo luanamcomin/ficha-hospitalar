@@ -24,12 +24,6 @@ export class FichaComponent {
 
   constructor(private pacienteService: PacienteService, private router: Router) {}
 
-  onClick() {
-    if (this.paciente) {
-      this.router.navigate(['/edit'], { state: { paciente: this.paciente } });
-    }
-  }
-
   onDelete() {
     if (this.paciente) {
       this.pacienteService.deletarPaciente(this.paciente.cpf);
@@ -40,7 +34,6 @@ export class FichaComponent {
     if (this.paciente) {
       this.pacienteService.atualizarPaciente(this.paciente);
     } */
-
 
   onUpdate() {
     if (this.paciente) {

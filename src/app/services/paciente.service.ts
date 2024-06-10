@@ -57,10 +57,6 @@ export class PacienteService {
     );
     this.pacientesSubject.next(updatedPacientes);
   }
-
-  public getPacientes(): Paciente[] {
-    return this.pacientesSubject.value;
-  }
 }
 
 
