@@ -8,31 +8,31 @@ import { BehaviorSubject, Observable } from 'rxjs';
 
 export class PacienteService {
   private pacientesSubject = new BehaviorSubject<Paciente[]>([
-  {
-    cpf: 12345678000,
-    nome: "Luana Martins",
-    dataNasc: "17/04/1996",
-    sexo: "Feminino",
-    telefone: "81999999999",
-    tipoSangue: "A",
-  },
-  {
-    cpf: 12365678900,
-    nome: "Priscila",
-    dataNasc: "01/01/2000",
-    sexo: "Feminino",
-    telefone: "(81)97777-7777",
-    tipoSangue: "B",
-  },
-  {
-    cpf: 12345608900,
-    nome: "Amanda",
-    dataNasc: "02/02/2000",
-    sexo: "Feminino",
-    telefone: "(81)98888-8888",
-    tipoSangue: "B+",
-  }
-]);
+    {
+      cpf: 12345678000,
+      nome: "Luana Martins",
+      dataNasc: "17/04/1996",
+      sexo: "Feminino",
+      telefone: "(81)99999-9999",
+      tipoSangue: "A",
+    },
+    {
+      cpf: 12365678900,
+      nome: "Priscila",
+      dataNasc: "01/01/2000",
+      sexo: "Feminino",
+      telefone: "(81)97777-7777",
+      tipoSangue: "B",
+    },
+    {
+      cpf: 12345608900,
+      nome: "Amanda",
+      dataNasc: "10/08/1995",
+      sexo: "Feminino",
+      telefone: "(81)98888-8888",
+      tipoSangue: "O+",
+    }
+  ]);
 
   constructor() { }
   public lerPacientes(): Observable<Paciente[]> {
@@ -57,6 +57,11 @@ export class PacienteService {
     );
     this.pacientesSubject.next(updatedPacientes);
   }
+
+  public getPacientes(): Paciente[] {
+    return this.pacientesSubject.value;
+  }
 }
+
 
 

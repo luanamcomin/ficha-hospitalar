@@ -5,6 +5,7 @@
   <button mat-button [matMenuTriggerFor]="menu">Menu</button>
   <mat-menu #menu="matMenu">
     <button routerLink="/pacientes" mat-menu-item>Lista de pacientes</button>
+    <button routerLink="/edit" mat-menu-item>Cadastro de paciente</button>
   </mat-menu>
 </mat-toolbar>
 
@@ -46,6 +47,8 @@
       <textarea matInput></textarea>
     </mat-form-field>
 
-    <button mat-stroked-button class="button" (click)="onSubmit()">Adicionar</button>
+    <button mat-stroked-button class="button" (click)="onSubmit()">Confirmar</button>
   </form>
 </div>
+
+

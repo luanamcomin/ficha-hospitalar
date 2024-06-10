@@ -22,12 +22,13 @@ import { PacienteService } from '../services/paciente.service';
 export class FichaComponent {
   @Input() paciente: Paciente | null = null;
 
+  constructor(private pacienteService: PacienteService, private router: Router) {}
+
   onClick() {
-    alert('Ficha adicionada a fila');
+    if (this.paciente) {
+      this.router.navigate(['/edit'], { state: { paciente: this.paciente } });
+    }
   }
-
-  constructor(private router: Router, private pacienteService: PacienteService) { }
-
 
   onDelete() {
     if (this.paciente) {
