@@ -35,7 +35,6 @@ export class PacienteService {
 ]);
 
   constructor() { }
-
   public lerPacientes(): Observable<Paciente[]> {
     return this.pacientesSubject.asObservable();
   }

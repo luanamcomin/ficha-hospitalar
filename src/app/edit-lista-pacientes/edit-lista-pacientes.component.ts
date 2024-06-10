@@ -9,6 +9,7 @@ import { FormGroup, FormsModule, FormControl, ReactiveFormsModule } from '@angul
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { PacienteService } from '../services/paciente.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-edit-lista-pacientes',
@@ -31,9 +32,13 @@ import { PacienteService } from '../services/paciente.service';
 })
 export class EditListaPacientesComponent {
 
-  constructor(
+/*   constructor(
     private pacienteService: PacienteService
-  ){ }
+  ){ } */
+
+  constructor(
+    private route: ActivatedRoute, private pacienteService: PacienteService
+  ) { }
 
   form = new FormGroup({
     nome: new FormControl(),
@@ -47,6 +52,25 @@ export class EditListaPacientesComponent {
   });
 
   onSubmit(){
+    if (this.form.valid) {
+      let paciente  = {
+        nome:this.form.value.nome,
+        cpf:this.form.value.cpf,
+        dataNasc:this.form.value.dataNasc,
+        sexo:this.form.value.sexo,
+        telefone:this.form.value.telefone,
+        tipoSangue:this.form.value.tipoSangue,
+      }
+      this.pacienteService.incluirPaciente(paciente);
+      this.form.reset();
+      alert('Paciente adicionado.');
+    } else {
+      alert('Por favor, preencha todos os campos.');
+    }
+  };
+
+/*
+  onSubmit(){
     let paciente  = {nome:this.form.value.nome,
                     cpf:this.form.value.cpf,
                     dataNasc:this.form.value.dataNasc,
@@ -56,6 +80,6 @@ export class EditListaPacientesComponent {
     }
     this.pacienteService.incluirPaciente(paciente);
     this.form.reset();
-  }
+    alert('Paciente adicionado.');
+  } */
 }
-

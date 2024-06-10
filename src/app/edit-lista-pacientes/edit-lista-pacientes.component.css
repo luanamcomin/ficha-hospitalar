@@ -16,6 +16,12 @@
   border-radius: 10px;
 }
 
+.example-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .example-full-width {
   width: 96%;
   margin: 10px;
