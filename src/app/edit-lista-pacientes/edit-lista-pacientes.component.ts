@@ -9,6 +9,7 @@ import { FormGroup, FormsModule, FormControl, ReactiveFormsModule } from '@angul
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { PacienteService } from '../services/paciente.service';
+import { Paciente } from '../models/paciente';
 
 @Component({
   selector: 'app-edit-lista-pacientes',
@@ -29,15 +30,7 @@ import { PacienteService } from '../services/paciente.service';
   templateUrl: './edit-lista-pacientes.component.html',
   styleUrls: ['./edit-lista-pacientes.component.css']
 })
-export class EditListaPacientesComponent {
-
-/*   constructor(
-    private pacienteService: PacienteService
-  ){ } */
-
-  constructor(
-    private route: ActivatedRoute, private pacienteService: PacienteService
-  ) { }
+export class EditListaPacientesComponent implements OnInit {
 
   form = new FormGroup({
     nome: new FormControl(),
@@ -49,16 +42,29 @@ export class EditListaPacientesComponent {
     tipoSangue: new FormControl(),
   });
 
-  onSubmit(){
-    if (this.form.valid) {
-      let paciente  = {
-        nome:this.form.value.nome,
-        cpf:this.form.value.cpf,
-        dataNasc:this.form.value.dataNasc,
-        sexo:this.form.value.sexo,
-        telefone:this.form.value.telefone,
-        tipoSangue:this.form.value.tipoSangue,
+  constructor(
+    private route: ActivatedRoute,
+    private pacienteService: PacienteService
+  ) {}
+
+  ngOnInit(){
+    const cpf = this.route.snapshot.paramMap.get('cpf');
+    if (cpf) {
+      const cpfNumber = Number(cpf);
+      if (!isNaN(cpfNumber)) {
+        const paciente = this.pacienteService.findPacienteByCpf(cpfNumber);
+        if (paciente) {
+          this.form.patchValue(paciente);
+        }
+      } else {
+        console.error('Invalid CPF format.');
       }
+    }
+  }
+
+  onSubmit() {
+    if (this.form.valid) {
+      const paciente = this.form.value as Paciente;
       this.pacienteService.incluirPaciente(paciente);
       this.form.reset();
       alert('Paciente adicionado.');
@@ -66,17 +72,4 @@ export class EditListaPacientesComponent {
       alert('Por favor, preencha todos os campos.');
     }
   };
-
-/*
-  onSubmit(){
-    let paciente  = {nome:this.form.value.nome,
-                    cpf:this.form.value.cpf,
-                    dataNasc:this.form.value.dataNasc,
-                    sexo:this.form.value.sexo,
-                    telefone:this.form.value.telefone,
-                    tipoSangue:this.form.value.tipoSangue,
-    }
-    this.form.reset();
-    alert('Paciente adicionado.');
-  } */
 }

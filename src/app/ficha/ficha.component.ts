@@ -5,6 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { Paciente } from '../models/paciente';
 import { MatIcon } from '@angular/material/icon';
 import { PacienteService } from '../services/paciente.service';
+import { find } from 'rxjs';
 
 @Component({
   selector: 'app-ficha',
@@ -30,32 +31,9 @@ export class FichaComponent {
     }
   }
 
-/*   onUpdate() {
-    if (this.paciente) {
-      this.pacienteService.atualizarPaciente(this.paciente);
-    } */
-
   onUpdate() {
     if (this.paciente) {
-      this.router.navigate(['/edit', this.paciente.cpf]);
+      this.router.navigate(['/edit', { cpf: this.paciente.cpf}]);
     }
   }
-
 }
-
-
-
-/*
-  editarPaciente(paciente: Paciente) {
-    // Abra o formulário de edição com os detalhes do paciente
-    this.paciente = {...paciente}; // Crie uma cópia do paciente para evitar mutações indesejadas
-  }
-
-  salvar() {
-    // Atualize o paciente com os detalhes do formulário
-    this.pacienteService.atualizarPaciente(this.paciente);
-    this.paciente = null; // Limpe o paciente atual
-  }
- */
-
-

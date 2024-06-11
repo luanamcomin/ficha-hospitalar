@@ -39,6 +39,10 @@ export class PacienteService {
     return this.pacientesSubject.asObservable();
   }
 
+  public findPacienteByCpf(cpf: number): Paciente | undefined {
+    return this.pacientesSubject.value.find(paciente => paciente.cpf === cpf);
+  }
+
   public incluirPaciente(paciente: Paciente) {
     const currentPacientes = this.pacientesSubject.value;
     this.pacientesSubject.next([...currentPacientes, paciente]);
